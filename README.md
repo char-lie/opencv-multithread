@@ -88,7 +88,7 @@ Finally, analyze the code
 clang-static-analyzer cmake --build build
 ```
 
-You can use `clang-format in conjunction with `diff`
+You can use `clang-format` in conjunction with `diff`
 to see proposed changes
 
 ```bash

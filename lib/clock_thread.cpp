@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "processors.hpp"
+#include "clock_thread.hpp"
 
 #include <cassert>
 #include <cstddef>

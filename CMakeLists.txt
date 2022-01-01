@@ -31,7 +31,7 @@ add_executable(
   main
   lib/main.cpp
   lib/thread_handle.cpp
-  lib/processors.cpp
+  lib/clock_thread.cpp
   lib/average_intensity_calculator.cpp
 )
 

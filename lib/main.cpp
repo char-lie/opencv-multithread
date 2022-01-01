@@ -31,7 +31,8 @@
 
 #include "average_intensity_calculator.hpp"
 #include "circular_buffer.hpp"
-#include "processors.hpp"
+#include "clock_thread.hpp"
+#include "queue_thread.hpp"
 
 int main(int argc, char* argv[]) try {
   if (argc != 2) {
