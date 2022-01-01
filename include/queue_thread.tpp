@@ -34,8 +34,8 @@ void queue_thread(ThreadHandle &thread_handle,
     std::lock_guard queue_image_guard{thread_handle.image_mutex};
     cv::Mat result;
     {
-        std::unique_lock lock{std::move(frames_queue.lock())};
-        cv::cvtColor(frames_queue.last(), result, cv::COLOR_RGB2GRAY);
+      std::unique_lock lock{std::move(frames_queue.lock())};
+      cv::cvtColor(frames_queue.last(), result, cv::COLOR_RGB2GRAY);
     }
     switch (image_number / rotation_period) {
       case 0:
@@ -66,9 +66,8 @@ void queue_thread(ThreadHandle &thread_handle,
 template <std::size_t buffer_size>
 void process_t1(ThreadHandle &queue_thread_handle, cv::Mat &image,
                 CircularBuffer<cv::Mat, buffer_size> &frames_queue) {
-  queue_thread_handle.push_image([&frames_queue, &image]() {
-    frames_queue.push(image);
-  });
+  queue_thread_handle.push_image(
+      [&frames_queue, &image]() { frames_queue.push(image); });
 
   queue_thread_handle.try_show_image();
 }

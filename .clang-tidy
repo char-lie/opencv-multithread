@@ -1,15 +1,16 @@
 {
     "Checks": "\
         *,\
-        -modernize-use-trailing-return-type,\
-        -llvmlibc-restrict-system-libc-headers,\
-        -google-runtime-references,\
-        -llvmlibc-callee-namespace,\
-        -fuchsia-default-arguments-calls,\
-        -llvmlibc-implementation-in-namespace,\
-        -misc-non-private-member-variables-in-classes,\
-        -hicpp-signed-bitwise,\
         -cppcoreguidelines-pro-bounds-pointer-arithmetic,\
+        -cppcoreguidelines-non-private-member-variables-in-classes,\
+        -fuchsia-default-arguments-calls,\
+        -google-runtime-references,\
+        -hicpp-signed-bitwise,\
+        -llvmlibc-callee-namespace,\
+        -llvmlibc-implementation-in-namespace,\
+        -llvmlibc-restrict-system-libc-headers,\
+        -misc-non-private-member-variables-in-classes,\
+        -modernize-use-trailing-return-type,\
     ",
     "WarningsAsErrors": "\
         *,\

@@ -31,12 +31,15 @@
 #include <string>
 
 struct ThreadHandle {
-  std::optional<cv::Mat> output_image{};
+ private:
   std::mutex mutex{};
-  std::mutex image_mutex{};
   std::condition_variable condition_variable{};
-  std::string window_name;
   bool is_finished{false};
+
+ public:
+  std::optional<cv::Mat> output_image{};
+  std::mutex image_mutex{};
+  std::string window_name;
   bool waiting{true};
 
   explicit ThreadHandle(std::string cv_window_name);
