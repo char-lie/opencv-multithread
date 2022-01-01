@@ -17,9 +17,12 @@ void AverageIntensityCalculator::replace_image(const cv::Mat& image)
 }
 
 float AverageIntensityCalculator::average() {
-  static_assert(std::numeric_limits<int>::max() > 255);
-  static_assert(std::numeric_limits<uchar>::max() == 255);
-  static_assert(std::numeric_limits<uchar>::min() == 0);
+  static constexpr int min_intensity{0};
+  static constexpr int max_intensity{255};
+  static constexpr int histogram_bars{max_intensity + 1};
+  static_assert(std::numeric_limits<int>::max() > max_intensity);
+  static_assert(std::numeric_limits<uchar>::max() == max_intensity);
+  static_assert(std::numeric_limits<uchar>::min() == min_intensity);
 
   if (this->images[0].type() != CV_8U or this->images[0].channels() != 1 or
       this->images[0].empty()) {
@@ -28,13 +31,10 @@ float AverageIntensityCalculator::average() {
         "allowed."};
   }
 
-  static constexpr int histogram_bars{256};
-  static constexpr int minimal_intensity{0};
-
   static const std::vector<int> channels{};
   static const cv::Mat mask{};
   static const std::vector<int> histogram_size{histogram_bars};
-  static const std::vector<float> histogram_range{minimal_intensity,
+  static const std::vector<float> histogram_range{min_intensity,
                                                   histogram_bars};
 
   cv::calcHist(this->images, channels, mask, this->histogram, histogram_size,
